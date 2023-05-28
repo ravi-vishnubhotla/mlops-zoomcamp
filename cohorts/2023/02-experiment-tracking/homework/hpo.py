@@ -20,7 +20,7 @@ def load_pickle(filename):
 @click.command()
 @click.option(
     "--data_path",
-    default="./output",
+    default="/opt/mlops/mlops-zoomcamp/cohorts/2023/data/output",
     help="Location where the processed NYC taxi trip data was saved"
 )
 @click.option(
@@ -42,13 +42,15 @@ def run_optimization(data_path: str, num_trials: int):
             'random_state': 42,
             'n_jobs': -1
         }
-
-        rf = RandomForestRegressor(**params)
-        rf.fit(X_train, y_train)
-        y_pred = rf.predict(X_val)
-        rmse = mean_squared_error(y_val, y_pred, squared=False)
-
-        return rmse
+        with mlflow.start_run():
+            mlflow.log_params(params)
+            rf = RandomForestRegressor(**params)
+            rf.fit(X_train, y_train)
+            y_pred = rf.predict(X_val)
+            rmse = mean_squared_error(y_val, y_pred, squared=False)
+            #log rmse
+            mlflow.log_metric("rmse", rmse)
+            return rmse
 
     sampler = TPESampler(seed=42)
     study = optuna.create_study(direction="minimize", sampler=sampler)

@@ -1,0 +1,15 @@
+artifact_uri: file:///opt/mlops/mlops-zoomcamp/cohorts/2023/02-experiment-tracking/homework/mlruns/0/90c05d63ec50407fb1dbffbb966477fd/artifacts
+end_time: 1685238205224
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 90c05d63ec50407fb1dbffbb966477fd
+run_name: rumbling-bear-346
+run_uuid: 90c05d63ec50407fb1dbffbb966477fd
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1685238192032
+status: 3
+tags: []
+user_id: ubuntu
