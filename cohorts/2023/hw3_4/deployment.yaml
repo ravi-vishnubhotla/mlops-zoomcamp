@@ -1,0 +1,13 @@
+deployments:
+- name: taxi1
+  entrypoint: 3.4/orchestrate.py:main_flow
+  work_pool: 
+    name: zoompool
+- name: taxi_s3_data
+  entrypoint: 3.5/orchestrate_s3.py:main_flow_s3
+  work_pool: 
+    name: zoompool
+- name: taxi_s3_data_rv
+  entrypoint: 3.5/orchestrate_s3.py:main_flow_s3_rv
+  work_pool: 
+    name: zoompool
